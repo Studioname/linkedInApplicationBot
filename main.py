@@ -31,6 +31,7 @@ password_input.send_keys(Keys.ENTER)
 driver.get(linked_in_job_search_endpoint)
 
 job_cards = driver.find_elements_by_css_selector(".job-card-container a")
+
 for item in job_cards:
     item.click()
     time.sleep(2)
@@ -46,12 +47,19 @@ for item in job_cards:
         #untick follow on company
         driver.find_element_by_css_selector("footer label").click()
         #click submit application
-        driver.find_elements_by_css_selector("footer button")[1].click()
-        #click eyeball to hide job
-        driver.find_element_by_css_selector(".job-card-container__action-container li-icon").click()
+        submit_button = driver.find_elements_by_css_selector("footer button")[1].click()
+
+        if submit_button.get_attribute("data-control-name") == "continue_unify":
+            driver.find_element_by_css_selector("div button").click()
+            driver.find_element_by_css_selector(".artdeco-modal__actionbar .artdeco-button--primary").click()
+
+        else:
+            submit_button.click()
+            # click eyeball to hide job
+            driver.find_element_by_css_selector(".job-card-container__action-container li-icon").click()
+
     except NoSuchElementException:
-        driver.find_element_by_css_selector("div button").click()
-        driver.find_element_by_css_selector(".artdeco-modal__actionbar .artdeco-button--primary").click()
+        print("No such element found. Skipped")
 
 
 
