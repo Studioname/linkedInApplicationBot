@@ -1,5 +1,7 @@
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 import os
 import time
 
@@ -17,6 +19,7 @@ driver.set_window_size(1024, 600)
 driver.maximize_window()
 
 driver.get(linked_in_login_endpoint)
+time.sleep(1)
 username_input = driver.find_element_by_id("username")
 password_input = driver.find_element_by_id("password")
 
@@ -31,15 +34,25 @@ job_cards = driver.find_elements_by_css_selector(".job-card-container a")
 for item in job_cards:
     item.click()
     time.sleep(2)
-    driver.find_element_by_class_name("jobs-apply-button").click()
-    telephone_number_input = driver.find_element_by_css_selector(".ph5 input")
-    telephone_number_input.send_keys(telephone_number)
-    driver.find_element_by_css_selector("footer button").click()
-    # buttons = driver.find_elements_by_tag_name("button")
-    # for button in buttons:
-    #     if button.get_attribute("aria-label") == "Continue to next step":
-    #         button.click()
-print(len(job_cards))
+    try:
+        driver.find_element_by_class_name("jobs-apply-button").click()
+        #input telephone number
+        telephone_number_input = driver.find_element_by_css_selector(".ph5 input")
+        telephone_number_input.send_keys(telephone_number)
+        #click next
+        driver.find_element_by_css_selector("footer button").click()
+        #choose cv step
+        driver.find_elements_by_css_selector("footer button")[1].click()
+        #untick follow on company
+        driver.find_element_by_css_selector("footer label").click()
+        #click submit application
+        driver.find_elements_by_css_selector("footer button")[1].click()
+        #click eyeball to hide job
+        driver.find_element_by_css_selector(".job-card-container__action-container li-icon").click()
+    except NoSuchElementException:
+        driver.find_element_by_css_selector("div button").click()
+        driver.find_element_by_css_selector(".artdeco-modal__actionbar .artdeco-button--primary").click()
+
 
 
 
