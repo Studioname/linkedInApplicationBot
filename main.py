@@ -65,6 +65,7 @@ for item in job_cards:
 
         if driver.find_elements_by_css_selector("footer button")[1].get_attribute("data-control-name") != "submit_unify":
             driver.find_element_by_css_selector("div button").click()
+            time.sleep(1)
             driver.find_element_by_css_selector(".artdeco-modal__actionbar .artdeco-button--primary").click()
         else:
             ##untick follow on company
