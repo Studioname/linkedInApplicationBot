@@ -7,3 +7,5 @@ test my code. I pulled a previous version, added the error handling and that was
 I'm almost done'. This is not the way to approach things - It starts out with a small error, but by the end you have a pile of spaghetti and no idea why it won't work anymore [when
 the initial problem was fairly simple to solve.] BREAKS ARE IMPORTANT! The code is 90% functional but I don't have the inclination to make another account - The lesson to be learned
 is to take breaks even if you're close to finished.
+
+Update: Success! I pulled the first version I uploaded to git and worked on that instead. Took some edge cases and error handling but it mostly works! Very reassuring to get the thing working =)
