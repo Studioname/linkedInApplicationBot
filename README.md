@@ -8,4 +8,4 @@ I'm almost done'. This is not the way to approach things - It starts out with a 
 the initial problem was fairly simple to solve.] BREAKS ARE IMPORTANT! The code is 90% functional but I don't have the inclination to make another account - The lesson to be learned
 is to take breaks even if you're close to finished.
 
-Update: Success! I pulled the first version I uploaded to git and worked on that instead. Took some edge cases and error handling but it mostly works! Very reassuring to get the thing working =)
+Update: Success! I pulled the first version I uploaded to git and worked on that instead. Took some edge cases and error handling but it mostly works! It's nice to get the thing working =)
