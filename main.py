@@ -81,8 +81,6 @@ for item in job_cards:
             buttons = driver.find_elements_by_class_name("artdeco-modal__dismiss")
             if len(buttons) == 1:
                 buttons[0].click()
-            # if driver.find_element_by_tag_name("button").get_attribute("aria-label") == "Dismiss":
-            #     driver.find_element_by_tag_name("button").click()
             time.sleep(1)
 
 
